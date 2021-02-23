@@ -1,0 +1,25 @@
+.comment-section{
+    background-color: white;
+    padding-bottom: 2%;
+}
+.comment-heading{
+    color:rgb(39, 38, 38);
+    font-weight: bolder;
+    font-size: 110%;
+    text-align: justify;
+    padding-left: 2%;
+}
+#comment-show{
+    text-align: left;
+    margin-left: 2%;
+}
+#comment-show > p > span{
+    font-weight: bolder;
+}
+#comment-show > p{
+    display: flex;
+    flex-direction: row;
+}
+#comment-show > p:nth-child(even){
+    margin-left: 3%;
+}

@@ -17,12 +17,17 @@ const useStyles= makeStyles((theme)=>({
         borderTopLeftRadius:0,
     },
 }));
-export default function SearchBar(){
+export default function SearchBar(props){
     const search=useStyles();
+    const makeCall=()=>{
+        let inputComponent=document.querySelector("#Search");
+        props.makeSearch(inputComponent.value);
+        inputComponent.value='';
+    }
     return(
         <div className='bar'>
             <TextField className={search.textarea} size="small" id="Search" variant="outlined"></TextField>
-            <Button className={search.button} variant="contained" size="large" ><Search/></Button>
+            <Button className={search.button} onClick={makeCall} variant="contained" size="large" ><Search/></Button>
         </div>
     );
 }

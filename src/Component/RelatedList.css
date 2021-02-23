@@ -1,0 +1,23 @@
+.related{
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+.description{
+    text-align: left;
+    padding: 0% 2%;
+    word-wrap: break-word;
+    word-break: keep-all;
+    font-size:90%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+.description > p{
+    margin: 0%;
+}
+.description > p:nth-child(2){
+    margin-top: 0.5%;
+    color: rgb(99, 96, 96);
+}
