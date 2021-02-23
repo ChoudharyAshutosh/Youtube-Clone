@@ -9,6 +9,18 @@ body{
   flex-direction: row;
   align-items: center;
 }
+.progress{
+  margin-top: 3%;
+  width:100%;
+  height:83.0vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-size{
+  height: 5% !important;
+  width: 5% !important;
+}
 .searched{
   width:70%;
   height: 100%;

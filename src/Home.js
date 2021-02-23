@@ -4,6 +4,7 @@ import SearchBar from './Component/SearchBar';
 import RelatedList from './Component/RelatedList';
 import Player from './Component/Player';
 import axios from 'axios';
+import { CircularProgress } from '@material-ui/core';
 function Home() {
   const [stateData, setData]=useState([]);
   const [selectedVideo, selectVideo]=useState(null);
@@ -35,6 +36,12 @@ function Home() {
     makeCall("");
   },[]);
   const showPage=(data, video)=>{
+    if(data.length<=0)
+    return(
+      <div className='progress'>
+      <CircularProgress className='progress-size'/>
+    </div>
+    );
     if(data.length>0 && (video!=null))
     return (
       <div className='content'>
