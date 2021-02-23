@@ -1,18 +1,19 @@
 import {useEffect, useState} from 'react';
-import './App.css';
+import './Home.css';
 import SearchBar from './Component/SearchBar';
 import RelatedList from './Component/RelatedList';
 import Player from './Component/Player';
 import axios from 'axios';
-function App() {
+function Home() {
   const [stateData, setData]=useState([]);
   const [selectedVideo, selectVideo]=useState(null);
   const makeCall=(search)=>{
     let url='https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q='+search+'&relevanceLanguage=en&key=AIzaSyDzsaB9lvsq_EToPY4fVar9_6OEra3XijM';
     axios.get(url).then((response)=>{
-      setData(response.data.items);
+      let list=response.data.items;
+      list.splice(0,1);
+      setData(list);
       selectVideo(response.data.items[0])
-      console.log(response.data.items[0]);
     });
   };
   const selectFromList=(id)=>{
@@ -26,8 +27,9 @@ function App() {
           selectVideo(listItem);
         }
     });
-    list.splice(indexToFetch,1);
+    list.splice(indexToFetch-1,1);
     list.push(lastSelected);
+    setData(list)
   }
   useEffect(()=>{
     makeCall("");
@@ -40,7 +42,7 @@ function App() {
               <Player selectedVideo={video}/>
           </div>
           <div className='recommended'>
-              <RelatedList data={stateData} selectvideo={selectFromList} selectVideo={selectFromList}/>
+              <RelatedList data={stateData} selectedVideo={selectedVideo} selectVideo={selectFromList}/>
           </div>
       </div>
     );
@@ -53,4 +55,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

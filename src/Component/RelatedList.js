@@ -4,9 +4,10 @@ export default function RelatedList(props){
     const selectItem=(e)=>{
         props.selectVideo(e.target.attributes.name.value);
 }
-    const renderList=(list)=>{
+    const renderList=(list, selectedVideo)=>{
         return(
             list.map(listItem=>{
+                if(`${listItem.etag+listItem.id.videoId}`!=`${selectedVideo.etag+selectedVideo.id.videoId}`)
                 return (
                     <div className='related' onClick={selectItem} key={listItem.etag+listItem.id.videoId} id={listItem.etag+listItem.id.videoId}>
                         <iframe width='40%' src={"https://www.youtube.com/embed/"+listItem.id.videoId}></iframe>
@@ -21,7 +22,7 @@ export default function RelatedList(props){
     }
     return(
         <Fragment>
-            {renderList(props.data)}
+            {renderList(props.data, props.selectedVideo)}
         </Fragment>
     );
 }
